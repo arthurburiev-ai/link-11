@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="intro-video" id="intro-video" aria-label="Intro video">
+      <video class="intro-video__media" id="intro-video-media" autoplay muted playsinline preload="auto">
+        <source src="assets/intro.mp4" type="video/mp4" />
+      </video>
+    </div>
+
     <main class="page">
       <div class="backdrop" aria-hidden="true"></div>
 
@@ -36,7 +42,7 @@
             <span class="link__arrow" aria-hidden="true">↗</span>
           </a>
 
-          <a class="link link--telegram" href="https://t.me/" target="_blank" rel="noopener noreferrer">
+          <a class="link link--telegram" href="https://t.me/+DUPduwBI5E4yYjcy" target="_blank" rel="noopener noreferrer">
             <span class="link__label">
               <strong>Telegram</strong>
               <small>News &amp; vibes</small>
@@ -74,6 +80,17 @@
       });
 
       continueAdultDialog.addEventListener('click', () => { adultDialog.hidden = true; });
+
+      const introVideo = document.getElementById('intro-video');
+      const introVideoMedia = document.getElementById('intro-video-media');
+
+      const finishIntro = () => {
+        introVideo.classList.add('intro-video--finished');
+        window.setTimeout(() => introVideo.remove(), 650);
+      };
+
+      introVideoMedia.addEventListener('ended', finishIntro);
+      introVideoMedia.addEventListener('error', finishIntro);
     </script>
   </body>
 </html>
